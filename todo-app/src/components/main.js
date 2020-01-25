@@ -12,7 +12,7 @@ export class Todo extends React.Component {
       <div>
         <h1>Todo App</h1>
         <AddNewTask />
-        <ToDoAppList />
+        <ToDoAppList tasks={this.props.tasks} />
       </div>
     );
   }

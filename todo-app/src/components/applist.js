@@ -6,11 +6,12 @@ export class ToDoAppList extends React.Component {
   }
 
   render(){
+    var items = this.props.tasks.map((elem, i) => {
+    return <li key={i}>{elem}</li>
+    });
     return(
       <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
+        {items}
       </ul>
     );
   }
