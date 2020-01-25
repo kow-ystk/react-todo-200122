@@ -7,19 +7,30 @@ export class Todo extends React.Component {
     super();
     this.state = {tasks: props.tasks};
     this.updateList = this.updateList.bind(this);
+    this.removeTask = this.removeTask.bind(this);
   }
 
   // リストの更新
   updateList(text) {
     var updatedTasks = this.state.tasks;
-    updatedTasks.push(text);
+    updatedTasks.unshift(text);
     this.setState({tasks: updatedTasks}); // stateを更新
+    // ローカルストレージ
+    this.updateLocalStorage(updatedTasks);
   }
 
+  // タスクの削除
   removeTask(text){
     var updatedTasks = this.state.tasks;
     updatedTasks.splice(updatedTasks.indexOf(text), 1);
     this.setState({tasks: updatedTasks});
+    // ローカルストレージ
+    this.updateLocalStorage(updatedTasks);
+  }
+
+  // ローカルストレージへデータを格納
+  updateLocalStorage(updatedTasks){
+    localStorage.setItem('storedTasks', JSON.stringify(updatedTasks));
   }
 
   render(){
