@@ -16,12 +16,18 @@ export class Todo extends React.Component {
     this.setState({tasks: updatedTasks}); // stateを更新
   }
 
+  removeTask(text){
+    var updatedTasks = this.state.tasks;
+    updatedTasks.splice(updatedTasks.indexOf(text), 1);
+    this.setState({tasks: updatedTasks});
+  }
+
   render(){
     return(
       <div>
         <h1>Todo App</h1>
         <AddNewTask updateList={this.updateList} />
-        <ToDoAppList tasks={this.state.tasks} />
+        <ToDoAppList tasks={this.state.tasks} remove={this.removeTask} />
       </div>
     );
   }
