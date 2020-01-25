@@ -3,8 +3,9 @@ import {AddNewTask} from './addtask';
 import {ToDoAppList} from './applist';
 
 export class Todo extends React.Component {
-  constructor(){
+  constructor(props){
     super();
+    this.state = {tasks: props.tasksList};
   }
 
   render(){
@@ -12,7 +13,7 @@ export class Todo extends React.Component {
       <div>
         <h1>Todo App</h1>
         <AddNewTask />
-        <ToDoAppList tasks={this.props.tasks} />
+        <ToDoAppList tasks={this.state.tasks} />
       </div>
     );
   }
